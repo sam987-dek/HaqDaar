@@ -3,7 +3,7 @@ import { Rule } from '../models/Rule.js';
 import { notFound } from '../utils/AppError.js';
 
 export async function listPacks(_req, res) {
-  const packs = await Pack.find().sort({ order: 1 }).select('key name tagline description status order stages').lean();
+  const packs = await Pack.find().sort({ order: 1 }).select('key name tagline description suggestedTitle status order stages').lean();
   res.json({ packs });
 }
 

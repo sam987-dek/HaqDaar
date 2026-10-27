@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'sonner';
 import { motion } from 'framer-motion';
@@ -9,18 +9,25 @@ import { Skeleton, Spinner, ErrorState } from '../components/ui/Feedback';
 import { usePacks, useCreateCase } from '../api/hooks';
 import { errorMessage, fieldErrors } from '../api/client';
 
-const SUGGESTED = { employment: 'Final settlement from my last job', flight: 'Cancelled flight refund and compensation' };
-
 export default function NewCase() {
   const [params] = useSearchParams();
   const { data: packs, isLoading, isError, error, refetch } = usePacks();
   const create = useCreateCase();
   const navigate = useNavigate();
   const [packKey, setPackKey] = useState(params.get('pack') || '');
-  const [title, setTitle] = useState(SUGGESTED[params.get('pack')] || '');
+  const [title, setTitle] = useState('');
   const [titleError, setTitleError] = useState('');
 
-  const choose = (key) => { setPackKey(key); if (!title || Object.values(SUGGESTED).includes(title)) setTitle(SUGGESTED[key] || ''); };
+  // Suggested titles come from the pack data. A title is only replaced while it is empty or still
+  // another pack's suggestion, so anything the user typed is kept.
+  const suggestedFor = (key) => packs?.find((p) => p.key === key)?.suggestedTitle || '';
+  const isSuggestion = (t) => !t.trim() || Boolean(packs?.some((p) => p.suggestedTitle && p.suggestedTitle === t));
+  const choose = (key) => { setPackKey(key); if (isSuggestion(title)) setTitle(suggestedFor(key)); };
+
+  // Opening /cases/new?pack=… fills the title once the packs have loaded.
+  useEffect(() => {
+    if (packs && packKey && isSuggestion(title)) setTitle(suggestedFor(packKey));
+  }, [packs]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const submit = async (e) => {
     e.preventDefault();

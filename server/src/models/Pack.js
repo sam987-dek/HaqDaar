@@ -51,6 +51,8 @@ const packSchema = new mongoose.Schema(
     name: { type: String, required: true },
     tagline: String,
     description: String,
+    // Pre-filled claim title on the New Claim page; the user can change it.
+    suggestedTitle: String,
     status: { type: String, enum: ['live', 'coming_soon'], default: 'live' },
     referenceDateField: { type: String, required: true },
     factSchema: [fieldSchema],
