@@ -5,6 +5,7 @@
 - **Live app:** _add your Vercel link here_
 - **API:** _add your Render link here_ (health check: `/api/health`)
 - **Demo video:** _add your video link here_
+- **Try it with sample documents:** [`demo-documents/`](demo-documents/) has made-up files for all three case types, with the expected results.
 
 Built by **Samarth Patil**, Scaler School of Technology.
 
