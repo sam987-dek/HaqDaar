@@ -2,12 +2,20 @@
 
 **Claim what you are legally owed.** HaqDaar reads your documents, checks them against the law and your agreements, estimates what you may be owed with the working shown, writes the formal letters and complaints, and tracks every deadline until you are paid.
 
-- **Live app:** _add your Vercel link here_
-- **API:** _add your Render link here_ (health check: `/api/health`)
-- **Demo video:** _add your video link here_
+- **Live app:** https://haq-daar.vercel.app
+- **API:** https://haqdaar-api.onrender.com (health check: [`/api/health`](https://haqdaar-api.onrender.com/api/health))
+- **Demo video:** [Watch on Google Drive](https://drive.google.com/file/d/1N9DWDREitwcqjJTGtJ7GrAYs2BSoaPHR/view?usp=drive_link)
 - **Try it with sample documents:** [`demo-documents/`](demo-documents/) has made-up files for all three case types, with the expected results.
 
 Built by **Samarth Patil**, Scaler School of Technology.
+
+---
+
+## Demo video
+
+▶️ **[Watch the full walkthrough on Google Drive](https://drive.google.com/file/d/1N9DWDREitwcqjJTGtJ7GrAYs2BSoaPHR/view?usp=drive_link)**
+
+The video covers opening a claim for each of the three case types, reading the facts from uploaded documents, the itemised calculation, letters and filing packs, and tracking replies through to the case file.
 
 ---
 
